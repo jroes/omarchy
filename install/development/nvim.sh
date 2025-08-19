@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 if ! command -v nvim &>/dev/null; then
   omarchy-yay -S --noconfirm --needed nvim luarocks tree-sitter-cli
 

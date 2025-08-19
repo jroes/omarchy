@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 omarchy-yay -S --noconfirm --needed docker docker-compose docker-buildx
 
 # Limit log size to avoid running out of disk

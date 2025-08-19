@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 sudo pacman -S --noconfirm cups cups-pdf cups-filters cups-browsed system-config-printer avahi nss-mdns
 sudo systemctl enable --now cups.service
 

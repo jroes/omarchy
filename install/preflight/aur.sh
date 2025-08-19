@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 # Only add Chaotic-AUR if the architecture is x86_64 so ARM users can build the packages
 if [[ "$(uname -m)" == "x86_64" ]] && ! command -v yay &>/dev/null; then
   # Try installing Chaotic-AUR keyring and mirrorlist

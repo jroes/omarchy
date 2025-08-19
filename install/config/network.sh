@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 # Install iwd explicitly if it wasn't included in archinstall
 # This can happen if archinstall used ethernet
 if ! command -v iwctl &>/dev/null; then

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 # Install bluetooth controls
 omarchy-yay -S --noconfirm --needed blueberry
 

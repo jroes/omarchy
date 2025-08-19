@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 if [ -z "$OMARCHY_BARE" ]; then
   omarchy-webapp-install "HEY" https://app.hey.com https://www.hey.com/assets/images/general/hey.png
   omarchy-webapp-install "Basecamp" https://launchpad.37signals.com https://basecamp.com/assets/images/general/basecamp.png

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 omarchy-yay -S --noconfirm --needed \
   wget curl unzip inetutils impala \
   fd eza fzf ripgrep zoxide bat jq xmlstarlet \

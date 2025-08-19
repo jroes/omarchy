@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 abort() {
   echo -e "\e[31mOmarchy install requires: $1\e[0m"
   echo

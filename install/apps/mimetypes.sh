@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 update-desktop-database ~/.local/share/applications
 
 # Open all images with imv

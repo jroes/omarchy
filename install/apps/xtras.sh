@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 if [ -z "$OMARCHY_BARE" ]; then
   omarchy-yay -S --noconfirm --needed \
     gnome-calculator gnome-keyring signal-desktop \

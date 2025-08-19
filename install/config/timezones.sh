@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 if ! command -v tzupdate &>/dev/null; then
   omarchy-yay -S --noconfirm --needed tzupdate
   sudo tee /etc/sudoers.d/omarchy-tzupdate >/dev/null <<EOF

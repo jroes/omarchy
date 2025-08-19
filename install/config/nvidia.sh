@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 # ==============================================================================
 # Hyprland NVIDIA Setup Script for Arch Linux
 # ==============================================================================

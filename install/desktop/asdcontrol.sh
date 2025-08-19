@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 # Install asdcontrol for controlling brightness on Apple Displays
 if [ -z "$OMARCHY_BARE" ] && ! command -v asdcontrol &>/dev/null; then
   git clone https://github.com/nikosdion/asdcontrol.git /tmp/asdcontrol

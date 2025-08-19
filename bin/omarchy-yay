@@ -22,18 +22,43 @@ if [[ " $* " =~ " -S " ]]; then
     
     # If we found packages to install, try cache first
     if [[ ${#packages[@]} -gt 0 ]]; then
+        built_packages=()
+        fallback_packages=()
+        
+        # First pass: build packages from cache
         for pkg in "${packages[@]}"; do
             if [[ -d "$PKGBUILD_CACHE/$pkg" ]]; then
-                echo "Installing $pkg from local cache..."
+                echo "Building $pkg from local cache..."
                 (
                     cd "$PKGBUILD_CACHE/$pkg"
-                    makepkg -si --noconfirm --needed
+                    if makepkg -s --noconfirm --needed; then
+                        built_pkg=$(ls *.pkg.tar.* 2>/dev/null | head -1)
+                        if [[ -n "$built_pkg" ]]; then
+                            built_packages+=("$PKGBUILD_CACHE/$pkg/$built_pkg")
+                        fi
+                    else
+                        echo "Build failed for $pkg, will try yay"
+                        fallback_packages+=("$pkg")
+                    fi
                 )
             else
-                echo "Installing $pkg via yay (not in cache)..."
-                yay -S --noconfirm --needed "$pkg"
+                echo "$pkg not in cache, will use yay"
+                fallback_packages+=("$pkg")
             fi
         done
+        
+        # Install all built packages at once
+        if [[ ${#built_packages[@]} -gt 0 ]]; then
+            echo "Installing ${#built_packages[@]} packages from cache..."
+            sudo pacman -U --noconfirm --needed "${built_packages[@]}"
+        fi
+        
+        # Install fallback packages via yay
+        if [[ ${#fallback_packages[@]} -gt 0 ]]; then
+            echo "Installing ${#fallback_packages[@]} packages via yay..."
+            yay -S --noconfirm --needed "${fallback_packages[@]}"
+        fi
+        
         exit 0
     fi
 fi

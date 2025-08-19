@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 # Install Ruby using gcc-14 for compatibility
 omarchy-yay -S --noconfirm --needed gcc14
 mise settings set ruby.ruby_build_opts "CC=gcc-14 CXX=g++-14"

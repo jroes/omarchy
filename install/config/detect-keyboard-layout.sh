@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Refresh sudo timestamp to avoid repeated prompts
+sudo -v
+
+
 conf="/etc/vconsole.conf"
 hyprconf="$HOME/.config/hypr/hyprland.conf"
 
