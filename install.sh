@@ -30,7 +30,6 @@ show_subtext() {
 # Install prerequisites
 source $OMARCHY_INSTALL/preflight/guard.sh
 source $OMARCHY_INSTALL/preflight/aur.sh
-source $OMARCHY_INSTALL/preflight/aur-download.sh
 source $OMARCHY_INSTALL/preflight/presentation.sh
 source $OMARCHY_INSTALL/preflight/migrations.sh
 
